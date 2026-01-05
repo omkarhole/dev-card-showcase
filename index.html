@@ -123,7 +123,12 @@
     </div>
 </section>
 
-    <!-- Main heading of the website -->
+<!-- 🎲 RANDOM CARD BUTTON -->
+<div class="random-button-container">
+    <button id="random-card-btn" class="random-btn">
+        <span>🔀</span> Pick Random Developer
+    </button>
+</div>
 
     <!-- Container that holds all the profile cards -->
     <div class="card-container">
@@ -604,6 +609,61 @@ function updateContributorStats() {
 document.addEventListener("DOMContentLoaded", updateContributorStats);
 </script>
 
+<!-- 🎲 RANDOM CARD SCRIPT -->
+<script>
+/* ---------- RANDOM CARD FUNCTIONALITY ---------- */
+const randomCardBtn = document.getElementById("random-card-btn");
+const cards = document.querySelectorAll(".card");
+
+// Remove highlight from all cards
+function removeHighlights() {
+    cards.forEach(card => {
+        card.classList.remove("random-highlight");
+    });
+}
+
+// Select and highlight a random card
+function selectRandomCard() {
+    // Remove any existing highlights
+    removeHighlights();
+    
+    // Get visible cards (exclude hidden ones from search)
+    const visibleCards = Array.from(cards).filter(card => 
+        card.style.display !== "none"
+    );
+    
+    if (visibleCards.length === 0) return;
+    
+    // Select a random card
+    const randomIndex = Math.floor(Math.random() * visibleCards.length);
+    const randomCard = visibleCards[randomIndex];
+    
+    // Add highlight class
+    randomCard.classList.add("random-highlight");
+    
+    // Scroll to the random card with smooth animation
+    randomCard.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+    
+    // Remove highlight after 3 seconds
+    setTimeout(() => {
+        randomCard.classList.remove("random-highlight");
+    }, 3000);
+}
+
+// Add click event to random button
+randomCardBtn.addEventListener("click", selectRandomCard);
+
+// Add keyboard shortcut (Alt+R or Ctrl+R)
+document.addEventListener("keydown", (e) => {
+    if ((e.altKey || e.ctrlKey) && e.key === "r") {
+        e.preventDefault();
+        selectRandomCard();
+    }
+});
+</script>
 
 </body>
 
