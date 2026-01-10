@@ -468,6 +468,121 @@
             position: relative;
             z-index: 1;
         }
+        /* ================================
+            TESTIMONIAL SECTION
+        ================================ */
+            .testimonial {
+            margin: 120px auto;
+            max-width: 1100px;
+            text-align: center;
+            }
+
+            .testimonial h2 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            }
+
+            .testimonial-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            }
+
+            /* Form */
+            .testimonial-form {
+            background: var(--bg-card);
+            border: 1px solid var(--border-primary);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            }
+
+            .testimonial-form input,
+            .testimonial-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-secondary);
+            background: transparent;
+            color: var(--text-primary);
+            font-size: 1rem;
+            }
+
+            .testimonial-form textarea {
+            min-height: 120px;
+            resize: none;
+            }
+
+            .testimonial-form button {
+            background: var(--gradient-button);
+            border: none;
+            color: white;
+            padding: 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            }
+
+            .testimonial-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+            }
+
+            /* Testimonial Cards */
+            .testimonial-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            }
+
+            .testimonial-card {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-primary);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            }
+
+            .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            }
+
+            /* Avatar */
+            .testimonial-avatar {
+            min-width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: white;
+            }
+
+            /* Content */
+            .testimonial-content h3 {
+            margin: 0 0 6px;
+            font-size: 1.1rem;
+            }
+
+            .testimonial-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            }
+
 
         /* Callout Section */
         .about-callout {
@@ -947,26 +1062,15 @@
                 </div>
             </div>
         </section>
-
-        <section id="add-testimonial">
+<section id="add-testimonial" class="testimonial">
   <h2>💬 Share Your Feedback</h2>
-  <p>Your words help us grow 🌱</p>
-
+  <p class="testimonial-subtitle">Your words help us grow 🌱</p>
   <div class="testimonial-form">
-    <input
-      type="text"
-      id="username"
-      placeholder="Your Name"
-    >
-
+    <input type="text" id="username" placeholder="Your Name" />
     <textarea id="feedback" placeholder="Write your feedback..."></textarea>
-
-    <button onclick="addTestimonial()">
-      Submit Feedback
-    </button>
+    <button onclick="addTestimonial()">Submit Feedback</button>
   </div>
-
-  <div id="testimonial-list"></div>
+  <div id="testimonial-list" class="testimonial-list"></div>
 </section>
 
 <script>
